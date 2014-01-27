@@ -3,6 +3,8 @@ SwitcherBlur
 
 Blur iOS 7 switcher snapshots.
 
+![Gaussian Blur your app snapshots](https://f.cloud.github.com/assets/951011/2005669/ae12cb90-86f4-11e3-9c13-6c691ef6b347.jpeg)
+
 ---------------------------------------
 	Simplified BSD License
 	Copyright (c) 2014, Julian Weiss
