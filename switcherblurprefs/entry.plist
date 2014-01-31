@@ -3,7 +3,7 @@
 		bundle = SwitcherBlurPrefs;
 		cell = PSLinkCell;
 		detail = "SwitcherBlurPrefsListController";
-		icon = "SwitcherBlurPrefs.png";
+		icon = icon.png;
 		isController = 1;
 		label = SwitcherBlur;
 	};

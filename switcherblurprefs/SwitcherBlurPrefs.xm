@@ -12,6 +12,19 @@
 	return _specifiers;
 }
 
-@end
+-(void)viewWillAppear:(BOOL)animated{
+    [(UITableView *)self.view deselectRowAtIndexPath:((UITableView *)self.view).indexPathForSelectedRow animated:YES];
 
-// vim:ft=objc
+	UIColor *tintColor = [UIColor orangeColor];
+	self.view.tintColor = tintColor;
+    self.navigationController.navigationBar.tintColor = tintColor;
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+
+	self.view.tintColor = nil;
+	self.navigationController.navigationBar.tintColor = nil;
+}
+
+@end
