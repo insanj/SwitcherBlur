@@ -4,67 +4,56 @@
 <dict>
 	<key>items</key>
 	<array>
+
 		<dict>
-			<key>PostNotification</key>
-			<string>com.insanj.switcherblur/reloadSettings</string>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<true/>
-			<key>defaults</key>
-			<string>com.insanj.switcherblur</string>
-			<key>key</key>
-			<string>enabled</string>
-			<key>label</key>
-			<string>Enabled</string>
+			<key>cell</key>			<string>PSGroupCell</string>
+			<key>label</key>		<string>Options</string>
+			<key>footerText</key> 	<string>Enable or disable works system wide. Selecting Blacklisted apps prevents blurring. No resprings required.</string>
 		</dict>
-                <dict>
-			<key>ALAllowsSelection</key>
-			<string>1</string>
-			<key>ALChangeNotification</key>
-			<string>com.insanj.switcherblur/reloadSettings</string>
+
+		<dict>
+			<key>PostNotification</key> 	<string>com.insanj.switcherblur/reloadSettings</string>
+			<key>cell</key> 				<string>PSSwitchCell</string>
+			<key>default</key> 				<true/>
+			<key>defaults</key> 			<string>com.insanj.switcherblur</string>
+			<key>key</key> 					<string>enabled</string>
+			<key>label</key> 				<string>Enabled</string>
+		</dict>
+		
+		<dict>
+			<key>ALAllowsSelection</key> 		<string>1</string>
+			<key>ALChangeNotification</key> 	<string>com.insanj.switcherblur/reloadSettings</string>
 			<key>ALSectionDescriptors</key>
-			<array>
-				<dict>
-					<key>cell-class-name</key>
-					<string>ALSwitchCell</string>
-					<key>icon-size</key>
-					<string>29</string>
-					<key>predicate</key>
-					<string>(isSystemApplication = TRUE)</string>
-					<key>suppress-hidden-apps</key>
-					<string>1</string>
-					<key>title</key>
-					<string>System Applications</string>
-				</dict>
-				<dict>
-					<key>cell-class-name</key>
-					<string>ALSwitchCell</string>
-					<key>icon-size</key>
-					<string>29</string>
-					<key>predicate</key>
-					<string>(isSystemApplication = FALSE)</string>
-					<key>suppress-hidden-apps</key>
-					<string>1</string>
-					<key>title</key>
-					<string>User Applications</string>
-				</dict>
-			</array>
-			<key>ALSettingsKeyPrefix</key>
-			<string>Blacklist-</string>
-			<key>ALSettingsPath</key>
-			<string>/var/mobile/Library/Preferences/com.insanj.switcherblur.plist</string>
-			<key>bundle</key>
-			<string>AppList</string>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>isController</key>
-			<true/>
-			<key>label</key>
-			<string>Disable for apps</string>
+				<array>
+					<dict>
+						<key>cell-class-name</key> 		<string>ALSwitchCell</string>
+						<key>icon-size</key> 			<string>29</string>
+						<key>predicate</key> 			<string>(isSystemApplication = TRUE)</string>
+						<key>suppress-hidden-apps</key> <string>1</string>
+						<key>title</key> 				<string>System Applications</string>
+					</dict>
+					<dict>
+						<key>cell-class-name</key> 		<string>ALSwitchCell</string>
+						<key>icon-size</key> 			<string>29</string>
+						<key>predicate</key> 			<string>(isSystemApplication = FALSE)</string>
+						<key>suppress-hidden-apps</key> <string>1</string>
+						<key>title</key> 				<string>User Applications</string>
+					</dict>
+				</array>
+			<key>ALSettingsKeyPrefix</key> 	<string>Blacklist-</string>
+			<key>ALSettingsPath</key> 		<string>/var/mobile/Library/Preferences/com.insanj.switcherblur.plist</string>
+			<key>bundle</key> 				<string>AppList</string>
+			<key>cell</key> 				<string>PSLinkCell</string>
+			<key>isController</key> 		<true/>
+			<key>label</key> 				<string>Blacklist</string>
 		</dict>
+
+		<dict>
+			<key>cell</key>			<string>PSGroupCell</string>
+			<key>footerText</key> 	<string>(CC) 2014 Julian Weiss. Source available online. Special thanks to Elijah Frederickson for AppList and toggling support.</string>
+		</dict>
+
 	</array>
-	<key>title</key>
-	<string>SwitcherBlur</string>
+	<key>title</key> 		<string>SwitcherBlur</string>
 </dict>
 </plist>

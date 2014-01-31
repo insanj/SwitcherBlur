@@ -1,16 +1,17 @@
-#import <Preferences/Preferences.h>
+#import <Preferences/PSListController.h>
 
-@interface SwitcherBlurPrefsListController: PSListController {
-}
+@interface SwitcherBlurPrefsListController: PSListController
 @end
 
 @implementation SwitcherBlurPrefsListController
-- (id)specifiers {
-	if(_specifiers == nil) {
+
+-(id)specifiers{
+	if(!_specifiers)
 		_specifiers = [[self loadSpecifiersFromPlistName:@"SwitcherBlurPrefs" target:self] retain];
-	}
+
 	return _specifiers;
 }
+
 @end
 
 // vim:ft=objc

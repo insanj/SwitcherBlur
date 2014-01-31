@@ -1,9 +1,9 @@
+TARGET=:clang
+ARCHS = armv7 armv7s arm64
 include theos/makefiles/common.mk
 
-ARCHS = armv7 armv7s arm64
-
 BUNDLE_NAME = SwitcherBlurPrefs
-SwitcherBlurPrefs_FILES = SwitcherBlurPrefs.mm
+SwitcherBlurPrefs_FILES = SwitcherBlurPrefs.xm
 SwitcherBlurPrefs_INSTALL_PATH = /Library/PreferenceBundles
 SwitcherBlurPrefs_FRAMEWORKS = UIKit
 SwitcherBlurPrefs_PRIVATE_FRAMEWORKS = Preferences
