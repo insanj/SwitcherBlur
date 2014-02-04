@@ -25,7 +25,7 @@
 /*********************** Global Functions **********************/
 
 static NSMutableArray *switcherblur_DisabledApps;  // @"All" means all are disabled, nil means everything's enabled
-static BOOL switcherblur_blurIfInactive;
+static NSInteger switcherblur_blurIfInactive;
 
 static void switcherBlur_reloadSettings(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo){
     NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Preferences/com.insanj.switcherblur.plist"]];
@@ -45,7 +45,7 @@ static void switcherBlur_reloadSettings(CFNotificationCenterRef center, void *ob
         if(switcherblur_DisabledApps.count == 0)
             switcherblur_DisabledApps = nil;
 
-        switcherblur_blurIfInactive = [settings objectForKey:@"running"] && [[settings objectForKey:@"running"] boolValue];
+        switcherblur_blurIfInactive = ([settings objectForKey:@"running"] && [[settings objectForKey:@"running"] boolValue]) + 1;
     }
 }
 
@@ -54,8 +54,13 @@ static void switcherBlur_reloadSettings(CFNotificationCenterRef center, void *ob
 %hook SBAppSliderSnapshotView
 
 +(id)appSliderSnapshotViewForApplication:(SBApplication*)application orientation:(int)orientation loadAsync:(BOOL)async withQueue:(id)queue statusBarCache:(id)cache{
+    if(switcherblur_blurIfInactive == 0){
+        NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Preferences/com.insanj.switcherblur.plist"]];
+        switcherblur_blurIfInactive = ([settings objectForKey:@"running"] && [[settings objectForKey:@"running"] boolValue]) + 1;
+    }
+
     if(!switcherblur_DisabledApps || ![switcherblur_DisabledApps[0] isEqualToString:@"All"]){
-        if(![switcherblur_DisabledApps containsObject:[application bundleIdentifier]] && !(switcherblur_blurIfInactive && [application isRunning])){
+        if(![switcherblur_DisabledApps containsObject:[application bundleIdentifier]] && !((switcherblur_blurIfInactive == 2) && [application isRunning])){
             NSLog(@"[SwitcherBlur]: Blurring application-specific snapshotImage %@", %orig());
 
             UIImageView *snapshot = (UIImageView *) %orig();
