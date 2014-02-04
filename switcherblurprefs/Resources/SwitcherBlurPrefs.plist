@@ -8,7 +8,7 @@
 		<dict>
 			<key>cell</key>			<string>PSGroupCell</string>
 			<key>label</key>		<string>Options</string>
-			<key>footerText</key> 	<string>Enable or disable works system wide. Selecting Blacklisted apps prevents blurring. No resprings required.</string>
+			<key>footerText</key> 	<string>Enable or disable works system wide. Selecting Blacklisted apps prevents blurring.</string>
 		</dict>
 
 		<dict>
@@ -50,7 +50,43 @@
 
 		<dict>
 			<key>cell</key>			<string>PSGroupCell</string>
-			<key>footerText</key> 	<string>(CC) 2014 Julian Weiss. Source available online. Special thanks to Elijah Frederickson for major code contributions.</string>
+			<key>footerText</key> 	<string>Only blurs apps not running in the background (unless Blacklisted above).</string>
+		</dict>
+
+		<dict>
+			<key>PostNotification</key> 	<string>com.insanj.switcherblur/reloadSettings</string>
+			<key>cell</key> 				<string>PSSwitchCell</string>
+			<key>default</key> 				<false/>
+			<key>defaults</key> 			<string>com.insanj.switcherblur</string>
+			<key>key</key> 					<string>running</string>
+			<key>label</key> 				<string>Inactive Blur</string>
+		</dict>
+
+
+		<dict>
+			<key>cell</key>				<string>PSGroupCell</string>
+			<key>label</key> 			<string>Contact</string>
+			<key>footerText</key> 		<string>Source available online. Special thanks to Elijah Frederickson for code contributions.</string>		
+		</dict>
+
+		<dict>
+			<key>cell</key> 		<string>PSButtonCell</string>
+			<key>label</key> 		<string>Support &amp; Feedback</string>
+			<key>icon</key> 		<string>mail.png</string>
+			<key>action</key> 		<string>mail</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>			<string>PSButtonCell</string>
+			<key>label</key>		<string>@insanj</string>
+			<key>icon</key> 		<string>twitter.png</string>
+			<key>action</key>  		<string>twitter</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>				<string>PSGroupCell</string>
+			<key>footerAlignment</key> 	<integer>1</integer>
+			<key>footerText</key> 		<string>© 2014 Julian Weiss</string>
 		</dict>
 
 	</array>

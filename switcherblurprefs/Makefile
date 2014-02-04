@@ -5,8 +5,8 @@ include theos/makefiles/common.mk
 BUNDLE_NAME = SwitcherBlurPrefs
 SwitcherBlurPrefs_FILES = SwitcherBlurPrefs.xm
 SwitcherBlurPrefs_INSTALL_PATH = /Library/PreferenceBundles
-SwitcherBlurPrefs_FRAMEWORKS = UIKit
-SwitcherBlurPrefs_PRIVATE_FRAMEWORKS = Preferences
+SwitcherBlurPrefs_FRAMEWORKS = UIKit Twitter CoreGraphics MessageUI
+SwitcherBlurPrefs_PRIVATE_FRAMEWORKS = Preferences 
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 
