@@ -1,16 +1,24 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
+#import "CKBlurView.h"
 
-/******************** Forward-Declarations *********************/
+/**************************** Forward-Declarations ****************************/
 
 @interface CAFilter : NSObject
 +(instancetype)filterWithName:(NSString *)name;
 @end
 
+@interface SpringBoard : UIApplication
+-(void)_relaunchSpringBoardNow;
+@end
+
 @interface SBApplication
 -(id)bundleIdentifier;
 -(BOOL)isRunning;
+@end
+
+@interface SBAppSliderWindow : UIWindow
 @end
 
 @interface SBAppSliderSnapshotView {
@@ -22,10 +30,10 @@
 @end
 
 
-/*********************** Global Functions **********************/
+/**************************** Settings Assignments ***************************/
 
 static NSMutableArray *switcherblur_DisabledApps;  // @"All" means all are disabled, nil means everything's enabled
-static NSInteger switcherblur_blurIfInactive;
+static NSInteger switcherblur_blurIfInactive, switcherblur_blurWallpaper;
 
 static void switcherBlur_reloadSettings(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo){
     NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Preferences/com.insanj.switcherblur.plist"]];
@@ -33,7 +41,8 @@ static void switcherBlur_reloadSettings(CFNotificationCenterRef center, void *ob
 
     if([settings objectForKey:@"enabled"] && ![[settings objectForKey:@"enabled"] boolValue]){
         switcherblur_DisabledApps = @[@"All"].mutableCopy;
-        switcherblur_blurIfInactive = NO;
+        switcherblur_blurIfInactive = 1;
+        switcherblur_blurWallpaper = 1;
     }
 
     else{
@@ -46,10 +55,38 @@ static void switcherBlur_reloadSettings(CFNotificationCenterRef center, void *ob
             switcherblur_DisabledApps = nil;
 
         switcherblur_blurIfInactive = ([settings objectForKey:@"running"] && [[settings objectForKey:@"running"] boolValue]) + 1;
+
+        int previousWallpaper = switcherblur_blurWallpaper;
+        switcherblur_blurWallpaper = ([settings objectForKey:@"wallpaper"] && [[settings objectForKey:@"wallpaper"] boolValue]) + 1;
+        if(previousWallpaper != switcherblur_blurWallpaper)
+            [(SpringBoard *)[%c(SpringBoard) sharedApplication] _relaunchSpringBoardNow];
     }
 }
 
-/**************************** Hooks ****************************/
+/**************************** Background Blur ****************************/
+
+%hook SBAppSliderWindow
+
+-(id)initWithFrame:(CGRect)frame{
+    if(switcherblur_blurWallpaper == 0){
+        NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[NSHomeDirectory() stringByAppendingPathComponent:@"/Library/Preferences/com.insanj.switcherblur.plist"]];
+        switcherblur_blurWallpaper = ([settings objectForKey:@"wallpaper"] && [[settings objectForKey:@"wallpaper"] boolValue]) + 1;
+    }
+
+    SBAppSliderWindow *window = %orig();
+
+    if(switcherblur_blurWallpaper == 2){
+        NSLog(@"[SwitcherBlur] Blurrig app switcher background : %@", self);
+        CKBlurView *blurView = [[CKBlurView alloc] initWithFrame:frame];
+        [window addSubview:blurView];
+    }
+
+    return window;
+}
+
+%end
+
+/**************************** Snapshot Blur ****************************/
 
 %hook SBAppSliderSnapshotView
 

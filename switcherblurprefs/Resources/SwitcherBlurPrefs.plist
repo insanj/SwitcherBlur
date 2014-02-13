@@ -62,18 +62,23 @@
 			<key>label</key> 				<string>Inactive Blur</string>
 		</dict>
 
-
 		<dict>
-			<key>cell</key>				<string>PSGroupCell</string>
-			<key>label</key> 			<string>Contact</string>
-			<key>footerText</key> 		<string>Source available online. Special thanks to Elijah Frederickson for code contributions.</string>		
+			<key>cell</key>			<string>PSGroupCell</string>
+			<key>footerText</key> 	<string>Blurs your wallpaper behind the switcher. Will respring when toggling.</string>
 		</dict>
 
 		<dict>
-			<key>cell</key> 		<string>PSButtonCell</string>
-			<key>label</key> 		<string>Support &amp; Feedback</string>
-			<key>icon</key> 		<string>mail.png</string>
-			<key>action</key> 		<string>mail</string>
+			<key>PostNotification</key> 	<string>com.insanj.switcherblur/reloadSettings</string>
+			<key>cell</key> 				<string>PSSwitchCell</string>
+			<key>default</key> 				<false/>
+			<key>defaults</key> 			<string>com.insanj.switcherblur</string>
+			<key>key</key> 					<string>wallpaper</string>
+			<key>label</key> 				<string>Wallpaper Blur</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>				<string>PSGroupCell</string>
+			<key>footerText</key> 		<string>Source available online. Special thanks to Elijah Frederickson for code contributions.</string>		
 		</dict>
 
 		<dict>

@@ -63,23 +63,6 @@
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://mobile.twitter.com/insanj"]];
 }
 
--(void)mail{
-	NSURL *helpurl = [NSURL URLWithString:@"mailto:insanjmail%40gmail.com?subject=SwitcherBlur%20(1.1.1)%20Support"];
-	if([MFMailComposeViewController canSendMail]){
-		MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
-		[composeViewController setMailComposeDelegate:self];
-		[composeViewController setToRecipients:@[@"insanjmail@gmail.com"]];
-		[composeViewController setSubject:@"SwitcherBlur (1.1.1) Support"];
-		[self presentViewController:composeViewController animated:YES completion:nil];
-	}//end if
-		
-	else if ([[UIApplication sharedApplication] canOpenURL:helpurl])
-		[[UIApplication sharedApplication] openURL:helpurl];
-		
-	else
-		[[[UIAlertView alloc] initWithTitle:@"Contact Developer" message:@"Shoot an email to insanjmail@gmail.com, or talk to me on twitter (@insanj) if you have any problems, requests, or ideas!" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil] show];
-}
-
 -(void)shareTapped:(UIBarButtonItem *)sender{
 	NSString *text = @"An iOS 7 switcher with style, utility, and a bit of blur. Get SwitcherBlur from @insanj today!";
 	NSURL *url = [NSURL URLWithString:@"https://github.com/insanj/SwitcherBlur/"];
