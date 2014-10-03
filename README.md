@@ -3,7 +3,7 @@ SwitcherBlur
 
 Configurable iOS 7 snapshots blurs. Uses [CKBlurView](https://github.com/conradev/CKBlurView) by conradev for the wallpaper blurring.
 
-![Gaussian Blur your app snapshots](https://f.cloud.github.com/assets/951011/2054415/231a633a-8ab5-11e3-99d8-0d8b75842f47.PNG)
+![Gaussian Blur your app snapshots](https://f.cloud.github.com/assets/951011/2164692/310bcc10-94ef-11e3-9808-f1479f93117b.PNG)
 
 ---------------------------------------	
 [Creative Commons Attribution-NonCommercial 3.0 United States License](http://creativecommons.org/licenses/by-nc/3.0/us/) as of 2014:

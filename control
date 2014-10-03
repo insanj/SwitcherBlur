@@ -2,7 +2,7 @@ Package: com.insanj.switcherblur
 Name: SwitcherBlur
 Pre-Depends: firmware (>= 7.0)
 Depends: mobilesubstrate, applist
-Version: 1.2
+Version: 1.2.1
 Architecture: iphoneos-arm
 Description: Blur the iOS 7 switcher.
 Maintainer: Julian Weiss <me@insanj.com>

@@ -5,7 +5,7 @@
 
 #define URL_ENCODE(string) [(NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)(string), NULL, CFSTR(":/=,!$& '()*+;[]@#?"), kCFStringEncodingUTF8) autorelease]
 
-@interface SwitcherBlurPrefsListController: PSListController <MFMailComposeViewControllerDelegate>{
+@interface SwitcherBlurPrefsListController : PSListController <MFMailComposeViewControllerDelegate>{
 	UIColor *tintColor;
 }
 @end
@@ -29,20 +29,20 @@
 
 	tintColor = [UIColor orangeColor];
 	[UISwitch appearanceWhenContainedIn:self.class, nil].onTintColor = tintColor;
-	//[UILabel appearanceWhenContainedIn:self.class, nil].textColor = tintColor;
+	// [UILabel appearanceWhenContainedIn:self.class, nil].textColor = tintColor;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [(UITableView *)self.view deselectRowAtIndexPath:((UITableView *)self.view).indexPathForSelectedRow animated:YES];
+    [[self table] deselectRowAtIndexPath:[self table].indexPathForSelectedRow animated:YES];
 
-	self.view.tintColor = tintColor;
+	[self table].tintColor = tintColor;
     self.navigationController.navigationBar.tintColor = tintColor;
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 
-	self.view.tintColor = nil;
+	[self table].tintColor = nil;
 	self.navigationController.navigationBar.tintColor = nil;
 }
 
