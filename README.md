@@ -1,7 +1,7 @@
 SwitcherBlur
 =======================
 
-Configurable iOS 7 snapshots blurs. Uses [CKBlurView](https://github.com/conradev/CKBlurView) by conradev for the wallpaper blurring.
+Configurable iOS 7 snapshots blurs. Uses [CKBlurView](https://github.com/conradev/CKBlurView) by conradev for the wallpaper blurring. **Retired in favor of [SwitcherFX](http://cydia.saurik.com/package/com.msmith.switcherfx/)**, which will provide support going forward.
 
 ![Gaussian Blur your app snapshots](https://f.cloud.github.com/assets/951011/2164692/310bcc10-94ef-11e3-9808-f1479f93117b.PNG)
 
